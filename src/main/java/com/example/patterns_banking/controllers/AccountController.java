@@ -5,6 +5,8 @@ import com.example.patterns_banking.models.Account;
 import com.example.patterns_banking.services.AccountService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
@@ -19,8 +21,13 @@ public class AccountController {
     return accountService.createAccount(account);
   }
 
-  @GetMapping("/{accountId}/deposit")
+  @PostMapping("/{accountId}/deposit")
   public Account deposit(@PathVariable Long accountId, @RequestParam Double amount) {
     return accountService.deposit(accountId, amount);
+  }
+
+  @GetMapping("/all")
+  public List<Account> GetAllAccounts() {
+    return accountService.GetAllAccounts();
   }
 }

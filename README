@@ -1,0 +1,26 @@
+
+
+
+GET ALL ACCOUNTS
+curl --location 'http://localhost:8080/accounts/all'
+
+DEPOSIT ACCOUNT
+curl --location --request POST 'http://localhost:8080/accounts/1/deposit?amount=80'
+
+CREATE USER
+curl --location 'http://localhost:8080/customers' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "John Doe",
+  "email": "johndoe@example.com"
+}'
+
+CREATE ACCOUNT
+curl --location 'http://localhost:8080/accounts' \
+--header 'Content-Type: application/json' \
+--data '{
+  "accountNumber": "123456778",
+  "balance": 10000.50,
+  "customerId": 1,
+  "accountType": "CHECKING"
+}'

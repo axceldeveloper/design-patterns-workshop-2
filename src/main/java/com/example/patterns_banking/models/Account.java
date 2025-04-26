@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.example.patterns_banking.factory.AccountFactoryProvider.AccountType;
 
 @Data
 @NoArgsConstructor
@@ -14,6 +15,8 @@ public abstract class Account {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String accountNumber;
+  @Enumerated(EnumType.STRING)
+  private AccountType accountType;
   private Double balance;
 
   @ManyToOne(fetch = FetchType.LAZY)
